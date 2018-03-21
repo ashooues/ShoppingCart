@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function() {
+      $( "#nav_result" ).load( "navBar.html" );
+    var panels = $('.user-infos');
+    var panelsButton = $('.dropdown-user');
+    panels.hide();
+
+    //Click dropdown
+    panelsButton.click(function() {
+        //get data-for attribute
+        var dataFor = $(this).attr('data-for');
+        var idFor = $(dataFor);
+
+        //current button
+        var currentButton = $(this);
+        idFor.slideToggle(400, function() {
+            //Completed slidetoggle
+            if(idFor.is(':visible'))
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+            }
+            else
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+            }
+        })
+    });
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('button').click(function(e) {
+        e.preventDefault();
+        alert("This is a demo.\n :-)");
+    });
+});
+
+$(document).ready(function(){
+    // alert("Test1");
+//    var url = ("http://localhost:8084/Ashish/cart/1/getCart");
+
+    $.get("http://localhost:8084/Ashish/getProfile",function(user, status){
+         
+        console.log(user);
+
+        if(status=="success"){
+ 
+        var html="";
+
+
+                html +='<div class="container">'
+      +'<div class="row">'
+      +'<div class="col-md-5  toppad  pull-right col-md-offset-3 ">'
+      +     '<A href="updateProfile.html" >Edit Profile </A>'
+
+       + '<A href="http://localhost:8084/Ashish/logout" >'+"Logout"+'</A>'
+       +'<br>'
+
+        + '</div>'
+        +  '<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >'
+   
+   
+        +  '<div class="panel panel-info">'
+        +    '<div class="panel-heading">'
+        +      '<h3 class="panel-title">'+"User Profile"+'</h3>'
+        +    '</div>'
+        +    '<div class="panel-body">'
+        +      '<div class="row">'
+
+                +'<div class=" col-md-12 col-lg-12 ">' 
+                +  '<table class="table table-user-information">'
+                +    '<tbody>'
+                +      '<tr>'
+                +        '<td>'+"Name:"+'</td>'
+                +        '<td>'+user.userName +'</td>'
+                +      '</tr>'
+                +      '<tr>'
+                +        '<td>'+"Email:"+'</td>'
+                +       '<td>'+user.emailId  +'</td>'
+                +      '</tr>'
+                +     '<tr>'
+                +        '<td>'+"Phone No."+'</td>'
+                +        '<td>'+ user.phoneNo+'</td>'
+                +      '</tr>'
+                +       '<tr>'
+                +        '<td>'+"Line 1"+'</td>'
+                +        '<td>'+ user.address.line1 +'</td>'
+                +      '</tr>'
+                +       '<tr>'
+                +        '<td>Line 2</td>'
+                +        '<td>'+user.address.line2 +'</td>'
+                +      '</tr>'
+                +       '<tr>'
+                +        '<td>City</td>'
+                +        '<td>'+user.address.city+'</td>'
+                +      '</tr>'
+                +       '<tr>'
+                +        '<td>State</td>'
+                +        '<td>'+user.address.state+'</td>'
+                +      '</tr>'
+                +       '<tr>'
+                +        '<td>Pin Code</td>'
+                +        '<td>'+user.address.pinCode+'</td>'
+                +      '</tr>'
+
+                +'</tr>'
+                +             
+                    '</tbody>'
+                +  '</table>'
+                +  '<style ></style>'
+                +  '<a href="updateProfile.html" class="btn btn-primary center">'+"Update Profile"+'</a>'
+                +'<ts class="col-lg-8 col-md-8 col-sm-8"></td>'
+                +  '<a href="order.html" class="btn btn-primary center">'+"Past Order"+'</a>'
+                +'</div>'
+             + '</div>'
+           + '</div>'
+
+         + '</div>'
+        +'</div>'
+      +'</div>'
+    +'</div>';
+                // +'<h3>'+ user.userName + '<span>'+ user.emailId +'</span>' + user.phoneNo +'</span>' 
+               /* + user.address.line1 +'</span>' + user.address.line2 +'</span>' + user.address.city +'</span>' 
+                + user.address.state +'</span>' + user.address.pinCode +'</h3>';*/
+        
+            $("#product_list").html(html);
+            // alert("Test3");
+        }
+    });
+});
+
+
+
+</script>
+<style>
+  .user-row {
+    margin-bottom: 14px;
+}
+
+.user-row:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+    height: 100%;
+}
+
+.dropdown-user:hover {
+    cursor: pointer;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad
+{margin-top:20px;
+}
+
+.center {
+    text-align: center;
+    border: 3px solid green;
+}
+
+</style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+</head>
+<body>
+      <div id="nav_result"></div>
+    <div class="container">
+ 
+    <div class="col-lg-9">
+      <div class="col-lg-12"> 
+
+        <div id="product_list"></div>
+
+    </div>
+  <!-- </div> -->
+</div>
+</body>
+</html>

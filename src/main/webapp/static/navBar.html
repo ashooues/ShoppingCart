@@ -1,0 +1,108 @@
+<nav class="navbar navbar-inverse " role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="home.html">ShopCart</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><a href="#" id="Electronics" onclick="showCateg('Electronics')">Electronics</a></li>
+            <li><a href="#" id="Watches" onclick="showCateg('Watches')">Watches</a></li>
+            <li><a href="#" id="Men" onclick="showCateg('Men')">Men</a></li>
+            <li><a href="#" id="Women" onclick="showCateg('Women')">Women</a></li>
+            <li><a href="#" id="Books" onclick="showCateg('Books')">Books</a></li>
+            <li><a href="#" id="Decoration" onclick="showCateg('Decoration')">Decoration</a></li>
+
+        </ul>
+        <div class="col-sm-4 col-md-4">
+            <!-- <form class="navbar-form" role="search"> -->
+                <div class="input-group">
+                    <input type="text"class="form-control" placeholder="Search" size="60" name="q" id="search"  >
+                    <div class="input-group-btn" >
+                        <button  class="btn btn-default" type="submit" onclick="searching()"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            <!-- </form> -->
+        </div>
+        <div  class="cart largenav col-sm-1">
+                <a id="cartdisp" class="cart-button" href="cart.html">Cart
+                    <span id="item-number"></span>
+                </a>
+            </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="signup.html" id="signup_nav">Sign Up</a></li>
+            <li><a href="login.html" id="login_nav">Login</a></li>
+          <li class="dropdown"><a class="dropdown-toggle" id="user_nav" data-toggle="dropdown" href="#">My Profile</span> <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="userProfileDemo.html">View Profile</a></li>
+<!--           <li><a href="upateProfile.html">Edit Profile</a></li> -->
+          <li><a href="order.html">Order History</a></li>
+          <li class="divider">
+          <li><a id ="signout" onclick="signoutfn()">Logout</a></li>
+        </ul>
+      </li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+
+
+
+     </div>
+     <style type="text/css">
+         .cart-button {
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .23), inset 1px 1px 0 0 hsla(0, 0%, 100%, .2);
+    padding: 10px 0;
+    text-align: center;
+    height: 41px;
+    border-radius: 2px;
+    font-weight: 500;
+    width: 120px;
+    display: inline-block;
+    color: #FFFFFF;
+   text-decoration: none;
+    color: inherit;
+    border: none;
+    outline: none;
+}
+
+.cart-button:hover{
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+     </style>
+<script type="text/javascript">
+  
+$(document).ready(function(){
+          $.get("/Ashish/isLoggedIn",function(data,status)
+
+            
+            {
+                if(data=="success")
+                {
+
+                           $("#signup_nav").hide();
+                           $("#login_nav").hide();
+                           $("#user_nav").show();
+                           $("#user_nav").append(user);
+                           $("#cartdisp").show();
+                }
+                else
+                {
+                   
+                    $("#cartdisp").hide();
+                }
+            }
+        );
+        $("#user_nav").hide();
+//        $("#cartdisp").hide();
+});
+</script>

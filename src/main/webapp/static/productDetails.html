@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="login.css">-->
+
+   <script type="text/javascript" src = "jscript/home.js"></script> 
+    <script type="text/javascript" src = "jscript/navBar.js"></script> 
+    
+<script type="text/javascript">
+    
+                    $(document)
+                        .ready(
+                                function() {
+                                     $( "#nav_result" ).load( "navBar.html" );
+                                    var url = window.location.href;
+                                    var id = url.split("/products/product/")[1]
+                                    
+                                    var settings = {
+                                      "async": true,
+                                      "crossDomain": true,
+                                      "url": "http://localhost:8084/Ashish/products/getById/" + id,
+                                      "method": "GET",
+                                      "headers": {
+                                        "cache-control": "no-cache",
+                                        "postman-token": "3634d281-9f01-3cec-3c18-703d8c3e9560"
+                                      }
+                                    }
+                               
+                                    $.ajax(settings).done(function (response) {
+                                    
+                              
+
+
+                                       console.log(response.pdName);
+
+                                       var name = "";
+                                       name+='<div class="container">'
+                                            +'<div class="row">'
+                                            +   '<div class="col-xs-4 item-photo">'
+                                            +        '<img style="max-width:100%;" src="https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg" />'
+                                            +    '</div>' +'<div class="col-xs-5" style="border:0px solid gray">'
+                                            +'<h3>'+  response.pdName + '</h3>' +'<h6 class="title-price"><small>Offer Price</small></h6>'
+                                            + '<h3 style="margin-top:0px;">INR ' +response.price+'</h3>'  
+                                            +'<div class="section" style="padding-bottom:20px;">'
+                                            +    '<h6 class="title-attr"><small>'+"QUANTITY = "+ 1 +'</small></h6>'
+                                             +'</div>' 
+                                                    +'<div class="section" style="padding-bottom:20px;">'
+                                                     +   '<button id = "button" class="btn btn-success" onclick="addtoCart('+ id +')"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart</button>'
+
+                                                    +'<hr>'
+                                                    + '<h3>'+"Product Details" +'</h3>'
+                                                    + '<h4>'+response.details+'</h4>'
+                                            ; 
+                                       document.getElementById("product_list").innerHTML = name;
+
+                                    });
+
+                                    });
+                                    
+function addtoCart(productId){
+
+        $.ajax({
+          url: "/Ashish/cart/add/" + productId,
+          method: "GET",
+          success : function(response){
+            alert(productId);
+            alert("Product Added");
+          },
+          error : function(response){
+            alert(productId);
+            alert("Failure");
+        }
+        });
+}
+
+
+</script>
+</head>
+<body>
+     <div id="nav_result"></div>
+     <div class="container-fluid">
+ 
+    <div class="col-lg-12"> 
+    <!-- For Filter Space are needed -->
+      <div class="col-lg-12"> 
+
+        <div id="product_list"></div>
+
+    </div>
+  <!-- </div> -->
+</div>
+     </div>
+</body>
+
+</html>
+

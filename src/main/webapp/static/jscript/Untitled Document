@@ -1,0 +1,54 @@
+$(document).ready(function(){
+    alert("Test1");
+	$.get("http://localhost:8084/Ashish/products/product", function(data, status){
+        alert("Test2");
+
+        if(status=="success"){
+		var html="";
+        $.each(data,function(i,order){
+            html +=
+                    '<h3>'+ order.pdName + '<span>'+ order.price +'</span>' + '</h3>'
+                    +    '<a id="add_cart" href="#" class="btn btn-info add_cart" onclick="addtoCart('+ order.productId +')">Add To Cart</a>'
+                            +  '<a id="show_details" class="btn btn-info" onclick="showDetails('+ order.productId +')">Detail</a>'
+                           + '</div>';
+            });
+            $("#product_list").html(html);
+            alert("Test3");
+        }
+    });
+});
+
+
+
+function addtoCart(productId){
+
+        $.ajax({
+          url: "/Ashish/cart/1/add/" + productId,
+          method: "GET",
+          statusCode: {
+                200: function (response) {          
+                    setCartSize();
+                    $("#m_title").html("Success");
+                    $("#m_detail").html("Item was added to the cart successfully");
+                    $('#myModal').modal('show');;   
+                },
+                401: function (response) {              
+                    $("#m_title").html("Failure");
+                    $("#m_detail").html("Error occured while adding item to the cart, please try later");
+                    $('#myModal').modal('show');;   
+                }
+          }
+        });
+}
+
+function showDetails(productId){
+
+    $.get("/Ashish/products/getById/" + productId, function(data, status){
+        if(status=="success"){
+            $("#m_title").html(data.name);
+            $("#m_detail").html(data.details);
+            $('#myModal').modal('show');;
+        }
+
+    });
+}

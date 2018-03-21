@@ -1,0 +1,10 @@
+0:0:0:0:0:0:0:1 - - [21/Mar/2018:15:56:30 +0530] "GET /Ashish/static/home.html HTTP/1.1" 200 1338 http-bio-8084-exec-1 137
+0:0:0:0:0:0:0:1 - - [21/Mar/2018:15:56:30 +0530] "GET /Ashish/static/jscript/navBar.js HTTP/1.1" 200 2091 http-bio-8084-exec-2 42
+0:0:0:0:0:0:0:1 - - [21/Mar/2018:15:56:30 +0530] "GET /Ashish/static/jscript/home.js HTTP/1.1" 200 1671 http-bio-8084-exec-3 37
+0:0:0:0:0:0:0:1 - - [21/Mar/2018:15:56:31 +0530] "GET /Ashish/static/images/abc.jpg HTTP/1.1" 200 319731 http-bio-8084-exec-5 6
+0:0:0:0:0:0:0:1 - - [21/Mar/2018:15:56:31 +0530] "GET /Ashish/static/navBar.html HTTP/1.1" 200 4058 http-bio-8084-exec-4 4
+0:0:0:0:0:0:0:1 - - [21/Mar/2018:15:56:31 +0530] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8084-exec-9 0
+0:0:0:0:0:0:0:1 - - [21/Mar/2018:15:56:31 +0530] "GET /Ashish/cart/getCart HTTP/1.1" 500 9838 http-bio-8084-exec-6 355
+0:0:0:0:0:0:0:1 - - [21/Mar/2018:15:56:31 +0530] "GET /Ashish/isLoggedIn HTTP/1.1" 200 7 http-bio-8084-exec-8 306
+0:0:0:0:0:0:0:1 - - [21/Mar/2018:15:56:31 +0530] "GET /Ashish/products/product HTTP/1.1" 202 14049 http-bio-8084-exec-7 523
+0:0:0:0:0:0:0:1 - - [21/Mar/2018:15:56:31 +0530] "GET /Ashish/static/images/addons.jpg HTTP/1.1" 200 26174 http-bio-8084-exec-2 4

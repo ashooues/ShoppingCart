@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="login.css">-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!--     <script type="text/javascript" src="jscript/home.js"> </script> -->
+    <script type="text/javascript" src="jscript/navBar.js"> </script>
+    <script src="jscript/cart.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+    function home(){
+        document.location.href = "home.html";
+    }
+
+    function order(){
+        document.location.href = "placeOrder.html";
+    }
+
+   
+</script>
+    
+<style type="text/css">
+    
+
+
+ .input-group-field {
+  text-align: center;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 1rem;
+}
+
+
+
+.plus-minus-input .input-group-button .circle {
+    background-color: lightgreen;
+  border-radius: 50%;
+  padding: 0.25em 0.8em;
+}
+
+
+</style>
+</head>
+<div id="nav_result"></div>
+<div id="check">
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <h1 style="text-align: center;">Cart Items</h1><hr>
+            <table class="table table-hover">
+            <thead>
+                    <tr>
+                        <th class="col-sm-8 col-md-6">Product</th>
+                        <th class="text-center col-sm-2 col-md-2">Quantity</th>
+                        <th class="text-center" style="padding: none">Price</th>
+                        <th class="text-center">Total</th>
+                        <th class="col-sm-1 col-md-1">Delete</th>
+                    </tr>
+               
+            </thead>
+            </table>
+              
+
+
+        <div id="product_list"></div>
+        <div id='totalprice' class="col-sm-3 col-md-offset-9"></div>
+        
+        <tr>
+           <div class="col-sm-8 col-md-8"></div>
+              <div class="col-sm-4 col-md-4"> 
+                  <button type="button" class="btn btn-default" onclick="home()">
+                      <span class="glyphicon glyphicon-shopping-cart" ></span> Continue Shopping
+                  </button>
+                       
+                  <button type="button" class="btn btn-success" onclick="order()" >
+                      Checkout <span class="glyphicon glyphicon-play"></span>
+                  </button>
+                        
+              </div>
+
+        </tr>
+                 
+      </div>
+<!--          <thead> -->
+
+    </div>
+ <!--  </div> -->
+</div>
+</div>
+<hr><hr>
+</body>
+</html>
+

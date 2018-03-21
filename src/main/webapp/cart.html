@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="login.css">-->
+
+
+    <script type="text/javascript">
+
+$(document).ready(function(){
+    alert("Test1");
+	$.get("http://localhost:8084/Ashish/cart/1/getCart", function(data, status){
+        alert("Test2");
+
+        if(status=="success"){
+		var html="";
+        $.each(data,function(i,order){
+            html +=
+                    '<h3>'+ order.pdName + '<span>'+ order.price +'</span>' + '</h3>';
+            });
+            $("#product_list").html(html);
+            alert("Test3");
+        }
+    });
+});
+
+
+
+
+
+</script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+ 
+    <div class="col-lg-9">
+      <div class="col-lg-12"> 
+
+        <div id="product_list"></div>
+
+    </div>
+  <!-- </div> -->
+</div>
+</body>
+</html>

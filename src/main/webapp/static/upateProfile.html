@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+/*  $(document).ready(function() {
+    var panels = $('.user-infos');
+    var panelsButton = $('.dropdown-user');
+    panels.hide();
+
+    //Click dropdown
+    panelsButton.click(function() {
+        //get data-for attribute
+        var dataFor = $(this).attr('data-for');
+        var idFor = $(dataFor);
+
+        //current button
+        var currentButton = $(this);
+        idFor.slideToggle(400, function() {
+            //Completed slidetoggle
+            if(idFor.is(':visible'))
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+            }
+            else
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+            }
+        })
+    });
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('button').click(function(e) {
+        e.preventDefault();
+        alert("This is a demo.\n :-)");
+    });
+});
+*/
+
+$(document).ready(function(){
+    $( "#nav_result" ).load( "navBar.html" );
+  
+  console.log("Test");
+  $.get("http://localhost:8084/Ashish/getProfile",function(order, status){
+
+          if(status=="success"){
+            
+      var phoneNo = $("#phoneNo").val(order.phoneNo);
+      var userName = $("#userName").val(order.userName);
+      var emailId = $("#emailId").val(order.emailId);
+      var line1 = $("#line1").val(order.address.line1);
+      var line2 = $("#line2").val(order.address.line2);
+      var city = $("#city").val(order.address.city);
+      var state = $("#state").val(order.address.state);
+      var pinCode = $("#pinCode").val(order.address.pinCode);
+
+          }
+  });
+});
+
+
+$(document).on('click', '#Update', function(){
+    alert("test1");
+    // signNow();
+    test();
+});
+
+function test(){
+
+    var phoneNo = $("#phoneNo").val();
+    var userName = $("#userName").val();
+    var emailId = $("#emailId").val();
+    var line1 = $("#line1").val();
+    var line2 = $("#line2").val();
+    var city = $("#city").val();
+    var state = $("#state").val();
+    var pinCode = $("#pinCode").val();
+    alert(emailId);
+    $.ajax({
+        url:"/Ashish/updateProfile",
+        method:"POST",
+        headers:{
+            "content-type":"application/json",
+        },
+        data : '{"userName":"' + userName + '","emailId":"' + emailId + '","phoneNo":"' + phoneNo + '", \n\"address" : {"line1":"' + line1 + '","line2":"' + line2 + '","city":"' + city + '","state":"' + state + '","pinCode":"'+ pinCode +'"}}',
+ 
+    });
+    alert("test2");
+
+  }
+
+</script>
+<style>
+  .user-row {
+    margin-bottom: 14px;
+}
+
+.user-row:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+    height: 100%;
+}
+
+.dropdown-user:hover {
+    cursor: pointer;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad
+{margin-top:20px;
+}
+
+.center {
+    text-align: center;
+    border: 3px solid green;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container-fluid">
+<div id="nav_result"></div>
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+          
+       <br>
+
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title" style="text-align: center;">Update Profile</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+
+                 <div class=" col-md-12 col-lg-12 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Name:</td>
+                        <td contenteditable='true'><input type="text" style="text-align: center;" id="userName" placeholder="Name"></td>
+                      </tr>
+                      <tr>
+                        <td>Email:</td>
+                        <td id="emailId"></td>
+                      </tr>
+                      <tr>
+                        <td>Phone No.</td>
+                        <td contenteditable='true'><input type="text" style="text-align: center;" id="phoneNo" placeholder="phoneNo"></td>
+                      </tr>
+                         <tr>
+                        <td>Line 1</td>
+                        <td contenteditable='true'><input type="text" style="text-align: center;" id="line1" placeholder="Line 1"></td>
+                      </tr>
+                       <tr>
+                        <td>Line 2</td>
+                        <td contenteditable='true'><input type="text" style="text-align: center;" id="line2" placeholder="Line 2"></td>
+                      </tr>
+                       <tr>
+                        <td>City</td>
+                        <td contenteditable='true'><input type="text" style="text-align: center;" id="city" placeholder="City"></td>
+                      </tr>
+                       <tr>
+                        <td>State</td>
+                        <td contenteditable='true'><input type="text" style="text-align: center;" id="state" placeholder="State"></td>
+                      </tr>
+                       <tr>
+                        <td>Pin Code</td>
+                        <td contenteditable='true'><input type="text" style="text-align: center;" id="pinCode" placeholder="Pin Code"></td>
+                      </tr>
+
+                           
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  <hr>
+                  <button class="btn btn-primary center col-md-4" id="Update">Update</button>
+                  <div class="col-md-4"></div>
+                  <a class="btn btn-primary center col-md-4" href="userProfileDemo.html" >Get Profile<a>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </body>
+    </html>

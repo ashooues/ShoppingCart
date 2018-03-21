@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="login.css">-->
+<!--  <script src = "./jscript/home.js"></script> -->
+    <script src = "jscript/category.js"></script>
+    <script src = "./jscript/navBar.js"></script>
+    <style type="text/css">
+.box {
+    background-color: white;
+    width: 240px;
+    height: 280px;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+.box1 {
+    text-align: center;
+
+}
+</style>
+</head>
+<body bgcolor= "#FFE4C4">
+    <div id="nav_result"></div>
+     <div class="container-fluid">
+       <div class="col-lg-2"> <hr>
+        <div id="category" style="font-size: 50px"></div>
+          <div>
+            <h2>Filter By Price</h2>
+            <input maxlength="9" id="min" placeholder="Min" name="low-price" class="a-input-text a-spacing-top-mini s-ref-price-range s-ref-price-padding" aria-label="Min" type="text">
+            <input maxlength="9" id="max" placeholder="Max" name="high-price" class="a-input-text a-spacing-top-mini s-ref-price-range s-ref-price-padding s-small-margin-left" aria-label="Max" type="text">
+            <p><input type="submit" value="Search" id="searchPrice"></p>
+          </div>  
+        </div>
+      
+
+    <div class="col-lg-10"> <hr>
+      <div id="product_list"></div>
+    
+    </div>
+  <!-- </div> -->
+  </div>
+</div>
+</body>
+
+</html>
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="login.css">-->
+
+    <style>
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+    body {background: #456;font-family: 'Open Sans', sans-serif;}
+    .login { width: 400px;margin: 16px auto;font-size: 16px;}
+
+    /* Reset top and bottom margins from certain elements */
+    .login-header,.login p { margin-top: 0;margin-bottom: 0;}
+
+    /* The triangle form is achieved by a CSS hack */
+    .login-triangle {width: 0;margin-right: auto;margin-left: auto;border: 12px solid transparent;border-bottom-color: #28d;}
+    .login-header {background: #28d;padding: 20px;font-size: 1.4em;font-weight: normal;text-align: center;text-transform: uppercase;color: #fff;}
+    .login-container {background: #ebebeb;padding: 12px;}
+
+    /* Every row inside .login-container is defined with p tags */
+    .login p {padding: 12px;}
+    .login input {box-sizing: border-box;display: block;width: 100%;border-width: 1px;border-style: solid;padding: 16px;outline: 0;font-family: inherit;font-size: 0.95em;}
+    .login input[type="text"],.login input[type="password"] {background: #fff;border-color: #bbb;color: #555;}
+
+    /* Text fields' focus effect */
+    .login input[type="text"]:focus, .login input[type="password"]:focus {  border-color: #888;}
+    .login input[type="submit"] {background: #28d;border-color: transparent;color: #fff;cursor: pointer;}
+    .login input[type="submit"]:hover {background: #17c;}
+
+    /* Buttons' focus effect */
+    .login input[type="submit"]:focus {border-color: #05a;}
+    @media all and (max-width:450px){
+    .login {width: 95%;}
+}
+</style>
+    <script type="text/javascript">
+
+$(document).on('click', '#addProduct', function(){
+    alert("test1");
+    // signNow();
+    test();
+});
+
+function test(){
+    
+    var pdName = $("#pdName").val();
+    var price = $("#price").val();
+    var details = $("#details").val();
+    var category = $("#category").val();
+    var brand = $("#brand").val();
+    var subcategory = $("#subcategory").val();
+
+    $.ajax({
+        url:"/Ashish/products/addProduct",
+        method:"POST",
+        headers:{
+            "content-type":"application/json",
+        },
+        data: '{"pdName":"'+pdName+'","price":"'+price+'","details":"'+details+'","category":"'+category+'","brand":"'+brand+'","subcategory":"'+subcategory+'"}',
+    
+    
+          statusCode: {
+                200: function (response) {
+                    window.location.reload();
+                },
+                401: function (response) {
+                   
+                    alert('Bad Credentials');
+                }
+          }
+});
+
+    alert("Test2");
+
+
+}
+</script>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="login">
+            <div class="login-triangle"></div>
+
+            <h2 class="login-header">Add Product</h2>
+
+            <form class="login-container">
+                <p><input type="text"  id="brand" placeholder="Product Brand"></p>
+                <p><input type="text"  id="pdName" placeholder="Product Name"></p>
+                <p><input type="text"  id="price" placeholder="Product Price" value=""></p>
+                 <p><input type="text"  id="details" placeholder="Product Details"></p>
+                 <p><select name="Category" title="Category" id="category" style="width: 100%" required>
+
+                <option value="Electronics">Electronics</option>
+                <option value="Women">Women</option>
+                <option value="Men">Men</option>
+                <option value="Books">Books</option>
+                <option value="Watches">Watches</option>
+                <option value="Decoration">Decoration</option></select required></p>
+                <p><input type="text"  id="subcategory" placeholder="Product SubCategory" value=""></p>                
+
+                <p><input type="submit" value="Add Products" id="addProduct"></p>
+            </form>
+        </div>>
+    </div>
+</div>
+
+</body>
+</html>
+    
